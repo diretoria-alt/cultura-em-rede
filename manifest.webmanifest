@@ -1,0 +1,16 @@
+{
+  "name": "Cultura em Rede — Instituto Gaiato",
+  "short_name": "Cultura em Rede",
+  "description": "Formação Estratégica em Gestão Cultural Digital para Agentes do Acre — PNAB 2",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1B3D2E",
+  "theme_color": "#1B3D2E",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

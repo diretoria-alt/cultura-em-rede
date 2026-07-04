@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cultura em Rede · Instituto Gaiato</title>
+<meta name="description" content="Formação Estratégica em Gestão Cultural Digital para Agentes do Acre — Instituto Gaiato | PNAB 2">
+<meta name="theme-color" content="#1B3D2E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+:root{
+  --verde:#1B3D2E; --verde2:#2E5C3F; --verde3:#122A1F;
+  --terra:#9E4C25; --areia:#CCA04C; --creme:#F5F1E8; --verdeclaro:#E0ECE5;
+  --m1:#9E4C25; --m2:#1A4A6B; --m3:#522978; --m4:#1A5C5A; --m5:#2D3A7C; --m6:#B88C18;
+  --bg:#F5F1E8; --card:#FFFFFF; --tx:#1A1A1A; --tx2:#5a5a52; --linha:#E2DCCE;
+  --sombra:0 2px 12px rgba(27,61,46,.10);
+}
+[data-tema="escuro"]{
+  --bg:#0E1F17; --card:#16291F; --tx:#EDE9DD; --tx2:#A8B0A0; --linha:#26382D;
+  --creme:#122A1F; --verdeclaro:#1A3326; --sombra:0 2px 14px rgba(0,0,0,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;transition:background .3s,color .3s}
+a{color:inherit}
+
+/* ── Topo ── */
+header{position:sticky;top:0;z-index:50;background:var(--verde);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.topo{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 18px}
+.logo{width:40px;height:40px;flex:none}
+.topo h1{font-size:1.05rem;font-weight:700;letter-spacing:.02em}
+.topo small{display:block;font-weight:400;font-size:.72rem;color:var(--areia)}
+.topo .esp{flex:1}
+.btn-tema{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:20px;padding:5px 13px;cursor:pointer;font-size:.85rem}
+nav{background:var(--verde3);overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav .abas{max-width:1100px;margin:0 auto;display:flex;white-space:nowrap}
+nav button{background:none;border:none;color:#cfd8cf;padding:12px 18px;cursor:pointer;font-size:.92rem;border-bottom:3px solid transparent;transition:.2s}
+nav button.ativa{color:var(--areia);border-bottom-color:var(--areia);font-weight:600}
+nav button:hover{color:#fff}
+
+/* ── Layout ── */
+main{max-width:1100px;margin:0 auto;padding:26px 18px 80px}
+.pagina{display:none;animation:surge .35s ease}
+.pagina.ativa{display:block}
+@keyframes surge{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2.titulo{font-size:1.7rem;color:var(--verde);margin-bottom:4px}
+[data-tema="escuro"] h2.titulo{color:var(--areia)}
+p.sub{color:var(--tx2);margin-bottom:24px}
+.card{background:var(--card);border-radius:14px;box-shadow:var(--sombra);padding:22px;margin-bottom:18px;border:1px solid var(--linha)}
+
+/* ── Hero ── */
+.hero{background:linear-gradient(135deg,var(--verde) 0%,var(--verde3) 100%);color:#fff;border-radius:18px;padding:40px 30px;margin-bottom:26px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(204,160,76,.28),transparent 70%)}
+.hero .tag{display:inline-block;background:var(--areia);color:var(--verde3);font-weight:700;font-size:.72rem;letter-spacing:.12em;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+.hero h2{font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.15;margin-bottom:10px}
+.hero p{max-width:560px;color:#d8e2d8;font-size:.98rem}
+.hero .numeros{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap}
+.hero .numeros div{text-align:center}
+.hero .numeros b{display:block;font-size:1.9rem;color:var(--areia)}
+.hero .numeros span{font-size:.78rem;color:#cfd8cf}
+
+/* ── Contagem ── */
+.contagem{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px}
+.contagem div{background:var(--verde);color:#fff;border-radius:12px;padding:12px 16px;min-width:74px;text-align:center}
+.contagem b{display:block;font-size:1.7rem;color:var(--areia)}
+.contagem span{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#cfd8cf}
+
+/* ── Cards de módulos ── */
+.grade-mod{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.mod-card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--sombra);cursor:pointer;transition:transform .18s,box-shadow .18s;border:1px solid var(--linha)}
+.mod-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(27,61,46,.18)}
+.mod-card .faixa{height:8px}
+.mod-card .corpo{padding:18px 20px}
+.mod-card .rotulo{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.mod-card .num{font-weight:800;font-size:1.15rem;color:#fff;width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.mod-card h3{font-size:1.05rem;line-height:1.3}
+.mod-card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:.72rem;background:var(--verdeclaro);color:var(--verde);padding:3px 10px;border-radius:14px;font-weight:600}
+[data-tema="escuro"] .chip{color:var(--areia)}
+.mod-card .status{font-size:.75rem;font-weight:700;margin-top:10px}
+.st-feito{color:#2E7D32}.st-prox{color:var(--terra)}
+
+/* ── Página do módulo ── */
+.mod-topo{border-radius:16px;color:#fff;padding:30px 26px;margin-bottom:20px}
+.mod-topo .volta{background:rgba(255,255,255,.18);border:none;color:#fff;border-radius:20px;padding:6px 16px;cursor:pointer;margin-bottom:14px;font-size:.85rem}
+.mod-topo h2{font-size:clamp(1.4rem,4vw,2rem)}
+.mod-topo .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.mod-topo .meta span{background:rgba(255,255,255,.16);padding:4px 14px;border-radius:16px;font-size:.8rem}
+.acordeao{border:1px solid var(--linha);border-radius:12px;margin-bottom:10px;overflow:hidden;background:var(--card)}
+.acordeao>button{width:100%;background:none;border:none;padding:15px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left;font-size:.95rem;color:var(--tx)}
+.acordeao .dur{margin-left:auto;flex:none;font-size:.75rem;font-weight:700;background:var(--verdeclaro);color:var(--verde);padding:3px 11px;border-radius:14px}
+[data-tema="escuro"] .acordeao .dur{color:var(--areia)}
+.acordeao .marc{width:10px;height:10px;border-radius:3px;flex:none}
+.acordeao .conteudo{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 18px;color:var(--tx2);font-size:.9rem}
+.acordeao.aberto .conteudo{max-height:400px;padding:0 18px 16px}
+.seta{transition:transform .25s;flex:none;font-size:.8rem;color:var(--tx2)}
+.acordeao.aberto .seta{transform:rotate(90deg)}
+
+/* ── Linha do tempo ── */
+.tempo{position:relative;padding-left:34px}
+.tempo::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:3px;background:var(--linha);border-radius:2px}
+.tempo .item{position:relative;padding:0 0 26px}
+.tempo .ponto{position:absolute;left:-30px;top:4px;width:19px;height:19px;border-radius:50%;border:3px solid var(--card)}
+.tempo b{display:block;font-size:1rem}
+.tempo .data{font-size:.8rem;color:var(--tx2)}
+.tempo .desc{font-size:.88rem;color:var(--tx2);margin-top:2px}
+
+/* ── Checklist ── */
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:13px 6px;border-bottom:1px solid var(--linha);cursor:pointer}
+.check-item:last-child{border-bottom:none}
+.check-item input{width:21px;height:21px;accent-color:var(--verde2);flex:none;margin-top:2px;cursor:pointer}
+.check-item.feito label{text-decoration:line-through;color:var(--tx2)}
+.check-item label{cursor:pointer;font-size:.93rem}
+.progresso{height:10px;background:var(--verdeclaro);border-radius:6px;overflow:hidden;margin:10px 0 20px}
+.progresso>div{height:100%;background:linear-gradient(90deg,var(--verde2),var(--areia));border-radius:6px;transition:width .4s ease}
+
+/* ── Materiais / listas ── */
+.rec{display:flex;align-items:center;gap:14px;padding:14px 6px;border-bottom:1px solid var(--linha);text-decoration:none}
+.rec:last-child{border-bottom:none}
+.rec .ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex:none;color:#fff}
+.rec b{font-size:.94rem;display:block}
+.rec span{font-size:.78rem;color:var(--tx2)}
+.rec:hover b{color:var(--verde2)}
+[data-tema="escuro"] .rec:hover b{color:var(--areia)}
+
+/* ── FAQ ── */
+details{border:1px solid var(--linha);border-radius:12px;margin-bottom:10px;background:var(--card)}
+summary{padding:15px 18px;cursor:pointer;font-weight:600;font-size:.94rem;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'+';font-size:1.3rem;color:var(--areia)}
+details[open] summary::after{content:'–'}
+details p{padding:0 18px 16px;color:var(--tx2);font-size:.9rem}
+
+/* ── Rodapé / instalar ── */
+footer{background:var(--verde3);color:#9fb2a4;text-align:center;padding:26px 18px;font-size:.8rem}
+footer b{color:var(--areia)}
+#instalar{display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--terra);color:#fff;border:none;border-radius:26px;padding:12px 24px;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3);z-index:60}
+.aviso-off{display:none;background:var(--areia);color:var(--verde3);text-align:center;font-size:.8rem;padding:6px;font-weight:600}
+body.offline .aviso-off{display:block}
+@media(max-width:600px){.hero{padding:28px 20px}.topo h1{font-size:.92rem}}
+</style>
+</head>
+<body>
+<div class="aviso-off">Você está offline — o site continua funcionando 🌿</div>
+<header>
+  <div class="topo">
+    <svg class="logo" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#CCA04C"/><path d="M32 10c-9 8-14 16-14 25a14 14 0 0028 0c0-9-5-17-14-25z" fill="#1B3D2E"/><path d="M32 22v24M32 30l-6-5M32 36l7-6" stroke="#CCA04C" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+    <div><h1>Cultura em Rede<small>Instituto Gaiato · PNAB 2 · Acre</small></h1></div>
+    <div class="esp"></div>
+    <button class="btn-tema" id="btnTema" aria-label="Alternar tema">🌙</button>
+  </div>
+  <nav><div class="abas" id="abas">
+    <button data-rota="inicio" class="ativa">Início</button>
+    <button data-rota="modulos">Módulos</button>
+    <button data-rota="cronograma">Cronograma</button>
+    <button data-rota="materiais">Materiais</button>
+    <button data-rota="checklist">Meu Progresso</button>
+    <button data-rota="bolsa">Bolsa</button>
+    <button data-rota="faq">FAQ</button>
+  </div></nav>
+</header>
+
+<main>
+<!-- ═══ INÍCIO ═══ -->
+<section class="pagina ativa" id="pg-inicio">
+  <div class="hero">
+    <span class="tag">FORMAÇÃO 2025–2026</span>
+    <h2>Gestão cultural digital<br>feita do território.</h2>
+    <p>Formação estratégica para agentes culturais do Acre. A floresta é a matéria-prima; as ferramentas digitais, a estratégia de existência.</p>
+    <div class="numeros">
+      <div><b>40h</b><span>de formação</span></div>
+      <div><b>6</b><span>módulos</span></div>
+      <div><b>22</b><span>agentes do Acre</span></div>
+      <div><b>100%</b><span>remoto e ao vivo</span></div>
+    </div>
+  </div>
+  <div class="card" id="cardProx">
+    <h3 style="color:var(--verde2);margin-bottom:6px">Próximo encontro</h3>
+    <p class="sub" id="proxTitulo" style="margin-bottom:0">—</p>
+    <div class="contagem" id="contagem"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:12px">A jornada</h3>
+    <div class="tempo" id="tempoInicio"></div>
+  </div>
+</section>
+
+<!-- ═══ MÓDULOS ═══ -->
+<section class="pagina" id="pg-modulos">
+  <h2 class="titulo">Os 6 módulos</h2>
+  <p class="sub">Toque em um módulo para ver o plano completo do encontro.</p>
+  <div class="grade-mod" id="gradeMod"></div>
+</section>
+
+<!-- ═══ PÁGINA DE MÓDULO ═══ -->
+<section class="pagina" id="pg-modulo"><div id="modDetalhe"></div></section>
+
+<!-- ═══ CRONOGRAMA ═══ -->
+<section class="pagina" id="pg-cronograma">
+  <h2 class="titulo">Cronograma</h2>
+  <p class="sub">6 encontros ao longo de 5 meses. As datas são confirmadas no grupo de WhatsApp.</p>
+  <div class="card"><div class="tempo" id="tempoCrono"></div></div>
+  <div class="card">
+    <h3 style="margin-bottom:8px">Estrutura de cada encontro</h3>
+    <p style="font-size:.9rem;color:var(--tx2)">Todo encontro segue o mesmo ritmo, para dar previsibilidade a quem se conecta de contextos diversos:</p>
+    <ol style="margin:12px 0 0 20px;font-size:.9rem;color:var(--tx2);display:grid;gap:6px">
+      <li><b style="color:var(--tx)">Chegada e Presença</b> — ritual de abertura, uma pergunta para o grupo</li>
+      <li><b style="color:var(--tx)">Revisão e Ancoragem</b> — celebração das atividades assíncronas</li>
+      <li><b style="color:var(--tx)">Conteúdo Central</b> — micro-blocos de 20-25 min com pausas</li>
+      <li><b style="color:var(--tx)">Prática Guiada</b> — vocês fazem, o facilitador acompanha</li>
+      <li><b style="color:var(--tx)">Síntese e Próximos Passos</b> — o que levamos deste encontro</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══ MATERIAIS ═══ -->
+<section class="pagina" id="pg-materiais">
+  <h2 class="titulo">Materiais</h2>
+  <p class="sub">Slides, pastas do Drive e ferramentas do curso.</p>
+  <div class="card"><h3 style="margin-bottom:6px">Slides dos módulos</h3><div id="listaSlides"></div></div>
+  <div class="card">
+    <h3 style="margin-bottom:6px">Ferramentas do curso</h3>
+    <div id="listaFerr"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:8px">A casa digital</h3>
+    <p style="font-size:.9rem;color:var(--tx2)">Todo o curso mora numa pasta compartilhada do Google Drive — <b>CULTURA EM REDE 2025-2026</b> — onde cada participante tem permissão de editor. Lá ficam os materiais de cada módulo, sua pasta pessoal e o Portfólio Coletivo do grupo. O link da pasta está fixado no grupo de WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ═══ CHECKLIST ═══ -->
+<section class="pagina" id="pg-checklist">
+  <h2 class="titulo">Meu progresso</h2>
+  <p class="sub">Este checklist é só seu — fica salvo neste aparelho, ninguém mais vê.</p>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Documentos da bolsa-conectividade</h3><span id="pctDocs" style="font-weight:700;color:var(--verde2)"></span></div>
+    <div class="progresso"><div id="barDocs"></div></div>
+    <div id="ckDocs"></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Produtos do curso</h3><span id="pctProd" style="font-weight:700;color:var(--verde2)"></span></div>
+    <div class="progresso"><div id="barProd"></div></div>
+    <div id="ckProd"></div>
+  </div>
+</section>
+
+<!-- ═══ BOLSA ═══ -->
+<section class="pagina" id="pg-bolsa">
+  <h2 class="titulo">Bolsa-conectividade</h2>
+  <p class="sub">Um ato político de democratização do acesso.</p>
+  <div class="card" style="border-left:6px solid var(--areia)">
+    <h3 style="font-size:1.6rem;color:var(--verde2)">R$ 200,00 <span style="font-size:.85rem;color:var(--tx2);font-weight:400">por participante</span></h3>
+    <p style="font-size:.92rem;color:var(--tx2);margin-top:8px">A bolsa reconhece que participar de uma formação remota tem custo real — dados móveis, energia, deslocamento até um ponto de conexão. Ela é parte da política de democratização do acesso à formação cultural, prevista no projeto aprovado pelo Edital 011/2025 (PNAB 2 / FEM-Acre).</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:10px">O que você precisa entregar</h3>
+    <div class="rec"><div class="ico" style="background:var(--verde2)">📝</div><div><b>Declaração de participação assinada</b><span>entregue no encerramento do curso (M6)</span></div></div>
+    <div class="rec"><div class="ico" style="background:var(--terra)">🪪</div><div><b>CPF e RG</b><span>cópia digitalizada ou foto legível</span></div></div>
+    <div class="rec"><div class="ico" style="background:var(--areia)">🏠</div><div><b>Comprovante de residência</b><span>recente, em seu nome ou de familiar</span></div></div>
+    <div class="rec"><div class="ico" style="background:var(--m2)">🏦</div><div><b>Dados bancários</b><span>conta corrente ou poupança em seu nome</span></div></div>
+    <p style="font-size:.85rem;color:var(--tx2);margin-top:12px">O pagamento é processado após o encerramento do curso. Dúvidas: fale com a coordenação pelo grupo de WhatsApp ou por <a href="mailto:diretoria@institutogaiato.org" style="color:var(--verde2);font-weight:600">diretoria@institutogaiato.org</a>.</p>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="pagina" id="pg-faq">
+  <h2 class="titulo">Perguntas frequentes</h2>
+  <p class="sub">O essencial para participar bem do curso.</p>
+  <details><summary>E se a minha internet cair durante o encontro?</summary><p>Respira. O curso foi desenhado para conexões instáveis: nada depende de vídeo em tempo real, os materiais ficam no Drive e podem ser acessados depois, e há sempre um resumo assíncrono no WhatsApp. Se cair, volte quando conseguir — sua presença é registrada mesmo com participação parcial documentada.</p></details>
+  <details><summary>Posso participar só pelo celular?</summary><p>Sim. Todas as ferramentas do curso (Drive, Docs, Sheets, Forms, Keep, Canva) funcionam no celular, e as atividades foram pensadas para isso. Um computador ajuda em alguns momentos (planilhas, principalmente), mas não é obrigatório.</p></details>
+  <details><summary>Preciso já saber usar as ferramentas do Google?</summary><p>Não. O curso parte do que você já sabe — se você usa WhatsApp, você já opera lógicas digitais. Cada ferramenta é introduzida do zero, com prática guiada e versões básica e avançada de cada atividade.</p></details>
+  <details><summary>O que preciso produzir até o final?</summary><p>Um projeto cultural completo do seu território — construído aos poucos, módulo a módulo: diagnóstico territorial (M1), plano de projeto (M2), kit de comunicação (M3), mapeamento de editais (M4), painel de monitoramento (M5). No M6 você apresenta tudo ao grupo em 8 minutos.</p></details>
+  <details><summary>Como funciona a presença e o certificado?</summary><p>A presença é registrada a cada encontro. A certificação considera participação nos encontros síncronos e realização das atividades assíncronas. O certificado informa a carga horária de 40 horas.</p></details>
+  <details><summary>Posso usar inteligência artificial nos meus textos?</summary><p>Sim — como colaboradora, não substituta. No M3 aprendemos a usar IA de forma crítica: a IA não tem território, não sabe o que é o seu rio, a sua rua, o seu povo. Você sabe. A regra é territorializar tudo o que a IA sugerir, e citar o uso quando fizer sentido.</p></details>
+  <details><summary>Perdi um encontro. E agora?</summary><p>Os materiais e a gravação (quando houver) ficam na pasta do módulo no Drive. Fale com o facilitador no WhatsApp para combinar a reposição da atividade assíncrona correspondente.</p></details>
+</section>
+</main>
+
+<footer>
+  <b>Cultura em Rede</b> · Formação Estratégica em Gestão Cultural Digital<br>
+  Instituto Gaiato · PNAB 2 · Edital 011/2025 · FEM – Acre · Rio Branco, 2025–2026<br>
+  <span style="opacity:.7">Feito com respeito pelos territórios da floresta 🌿</span>
+</footer>
+<button id="instalar">📲 Instalar o app do curso</button>
+
+<script>
+/* ═══════════ DADOS ═══════════ */
+const MODULOS=[
+ {id:1,cor:'var(--m1)',hex:'#9E4C25',titulo:'Cultura, memória e organização digital',carga:'6h',ferr:['Drive','Keep'],produto:'Ambiente digital organizado',
+  resumo:'Cultura, registro e memória: por que organizar já é um ato cultural. A sua primeira casa digital no Google Drive e o Keep como caderno criativo do cotidiano.',
+  blocos:[['Chegada e Nomeação','45 min','Ritual de abertura: cada agente se nomeia e nomeia seu território. Construção coletiva das regras de convivência do grupo.'],
+   ['Cultura, memória e registro','60 min','Mostrar, não discorrer: casos reais de coletivos que documentaram (ou se perderam) e uma pesquisa ao vivo do que existe — e do que está invisível — na internet.'],
+   ['Google Drive: sua primeira casa digital','90 min','Prática guiada: criar e organizar sua pasta pessoal e seus acervos na estrutura do curso. O Drive como infraestrutura, memória e portfólio.'],
+   ['Google Keep: caderno criativo','60 min','O caderno digital de quem trabalha pelo celular: listas, lembretes e ideias capturadas onde quer que você esteja.'],
+   ['Síntese e Atividade Assíncrona','45 min','Fechamento coletivo e orientação da atividade da semana: organizar o acervo pessoal e alimentar o Diário de Formação.']]},
+ {id:2,cor:'var(--m2)',hex:'#1A4A6B',titulo:'Escrita e formalização de projetos culturais',carga:'8h',ferr:['Docs','Forms'],produto:'Projeto cultural estruturado',
+  resumo:'Da ideia ao projeto no papel: objetivo, justificativa e descrição de ações escritos no Google Docs, e o Forms para organizar inscrições e escutas da comunidade.',
+  blocos:[['Chegada e Revisão','45 min','Retomada dos acervos organizados no M1 — celebração do que o grupo construiu de forma assíncrona.'],
+   ['O que é um projeto cultural?','90 min','Dissecar ao vivo um projeto aprovado da FEM/FUNCULTURA e compará-lo lado a lado com um exemplo mais fraco — a anatomia do projeto aparece no caso real.'],
+   ['Google Docs: escrita colaborativa','90 min','Prática guiada: estruturar o texto do seu projeto no Docs, articulando linguagem comunitária e linguagem institucional.'],
+   ['Google Forms: escutas e inscrições','60 min','Criar formulários para escutar a comunidade e organizar inscrições — a escuta como base do projeto.'],
+   ['Apresentações relâmpago e síntese','90 min','Cada agente apresenta seu projeto em 2 minutos. Feedback rápido do grupo e definição da atividade assíncrona.']]},
+ {id:3,cor:'var(--m3)',hex:'#522978',titulo:'Planejamento e orçamento cultural',carga:'8h',ferr:['Sheets'],produto:'Cronograma, orçamento e edital-alvo',
+  resumo:'Metas, cronogramas e orçamentos no Google Sheets, e a leitura orientada de editais — traduzir a linguagem institucional sem perder a alma do território.',
+  blocos:[['Chegada e Provocação','45 min','Planejar é um ato de cuidado com o projeto. Retomada dos projetos escritos no M2 e provocação sobre metas realistas.'],
+   ['Metas e cronograma no Sheets','120 min','Prática guiada: transformar as ações do projeto em cronograma com metas e prazos numa planilha acessível.'],
+   ['Orçamento cultural','90 min','Montar um orçamento que para em pé: valores realistas, fontes de custo e coerência com as atividades propostas.'],
+   ['Leitura orientada de editais','60 min','Anatomia de um edital real: objeto, quem pode, prazos, critérios e documentação. Traduzir o projeto para a linguagem do edital.'],
+   ['Síntese e edital-alvo','30 min','Cada agente escolhe um edital-alvo e define seu plano de inscrição com datas reais.']]},
+ {id:4,cor:'var(--m4)',hex:'#1A5C5A',titulo:'Comunicação visual e identidade cultural',carga:'8h',ferr:['Canva'],produto:'Kit de comunicação e identidade visual',
+  resumo:'A comunicação como dimensão estratégica da cultura: identidade visual, design acessível e materiais de divulgação criados no Canva.',
+  blocos:[['Chegada e Diagnóstico de Comunicação','45 min','Como o seu trabalho cultural aparece (ou não aparece) hoje? Mapeamento honesto da presença de cada agente.'],
+   ['Identidade Visual com Canva','120 min','O bloco mais mão-na-massa do curso: logo, paleta de cores e tipografia para o seu projeto ou coletivo.'],
+   ['Design e acessibilidade','90 min','Princípios de design e comunicação acessível: contraste, legibilidade, descrição de imagens — divulgação que inclui.'],
+   ['Escrita para o digital','60 min','Escrever para ser lido no celular: títulos, legendas e chamadas com a voz do território na linguagem das redes.'],
+   ['Síntese e Kit de Comunicação','30 min','Montagem final do kit: identidade visual + templates + textos-base, tudo salvo na sua pasta do Drive.']]},
+ {id:5,cor:'var(--m5)',hex:'#2D3A7C',titulo:'Inteligência Artificial e cultura',carga:'6h',ferr:['IA generativa'],produto:'Projeto revisado com apoio de IA',
+  resumo:'A IA como colaboradora, não substituta: apoio à escrita, organização e revisão de projetos, com autoria, ética e territorialização — sempre demonstrada ao vivo.',
+  blocos:[['Chegada e Primeira Demonstração','45 min','Abertura curta e direto para a tela: uma demonstração-relâmpago de 2-3 coisas que a IA faz bem — e uma que ela faz mal (algo bem local do Acre).'],
+   ['IA como assistente de escrita','90 min','Prática guiada: usar ChatGPT, Claude e Gemini para apoiar a escrita e a revisão do seu projeto, dando boas instruções (prompts).'],
+   ['Organização e revisão com IA','90 min','A IA para organizar ideias, resumir e revisar textos — sempre territorializando e checando o que ela sugere.'],
+   ['Autoria e ética na prática','25 min','Curiosidades ao vivo: a IA inventando um lugar do Acre e o mesmo prompt em três IAs lado a lado. A ética aparece no que surge na tela — quando citar, o que nunca colocar.'],
+   ['Síntese e Preparação para o M6','30 min','Orientações finais para o projeto final: o que apresentar, em quanto tempo, e como funciona a avaliação por rubrica.']]},
+ {id:6,cor:'var(--m6)',hex:'#B88C18',titulo:'Projeto final e socialização',carga:'4h',ferr:['Todas as ferramentas'],produto:'Projeto autoral apresentado',
+  resumo:'O encontro de encerramento: cada agente apresenta seu projeto autoral, avaliado pela rubrica oficial de 6 critérios, celebramos a jornada e fortalecemos a rede.',
+  blocos:[['Abertura e Celebração','30 min','Ritual especial: cada pessoa traz uma foto ou objeto que representa sua trajetória no curso. Linha do tempo coletiva.'],
+   ['Apresentação dos projetos autorais','120 min','8 minutos por agente. O facilitador avalia ao vivo pela rubrica de 6 critérios (0–4 cada, máx. 24; ≥16 aprova) com devolutiva escrita.'],
+   ['Avaliação Final e Perspectivas','45 min','Formulário de avaliação do curso + Roda de Perspectivas: o que você vai fazer diferente na segunda-feira?'],
+   ['Encerramento e Próximos Passos','30 min','Kit digital de gestão cultural, informes da bolsa-conectividade e ritual de encerramento: uma frase de cada pessoa e a foto coletiva da turma.']]}
+];
+// Datas dos encontros — a partir do Cronograma de Execução Readequado (vigência 01/08/2026 a 15/12/2026)
+const DATAS=[
+ {m:1,d:new Date(2026,8,6,9,0),rot:'06 a 15/set/2026'},
+ {m:2,d:new Date(2026,8,16,9,0),rot:'16 a 30/set/2026'},
+ {m:3,d:new Date(2026,9,1,9,0),rot:'01 a 12/out/2026'},
+ {m:4,d:new Date(2026,9,13,9,0),rot:'13 a 25/out/2026'},
+ {m:5,d:new Date(2026,9,26,9,0),rot:'26/out a 05/nov/2026'},
+ {m:6,d:new Date(2026,10,6,9,0),rot:'06 a 10/nov/2026'}
+];
+const DOCS=['Declaração de participação assinada','Cópia do CPF','Cópia do RG','Comprovante de residência','Dados bancários enviados à coordenação'];
+const PRODS=['Ambiente digital organizado no Drive (M1)','Projeto cultural estruturado no Docs (M2)','Cronograma, orçamento e edital-alvo (M3)','Kit de comunicação e identidade visual (M4)','Projeto revisado com apoio de IA (M5)','Projeto autoral apresentado (M6)','Diário de Formação em dia','Pasta pessoal organizada no Drive'];
+const FERRAMENTAS=[
+ ['🗂️','var(--verde2)','Google Drive','a casa digital do curso — pastas, materiais, portfólio','https://drive.google.com'],
+ ['📄','var(--m2)','Google Docs','escrita colaborativa — diagnóstico, projeto, textos','https://docs.google.com'],
+ ['📊','var(--m4)','Google Sheets','cronograma, orçamento e painel de monitoramento','https://sheets.google.com'],
+ ['📋','var(--m3)','Google Forms','formulários de escuta e avaliação','https://forms.google.com'],
+ ['📌','var(--areia)','Google Keep','caderno digital de ideias e lembretes','https://keep.google.com'],
+ ['🎨','var(--terra)','Canva','identidade visual e materiais de comunicação','https://canva.com']
+];
+
+/* ═══════════ NAVEGAÇÃO ═══════════ */
+const abas=document.getElementById('abas');
+function irPara(rota){
+  document.querySelectorAll('.pagina').forEach(p=>p.classList.remove('ativa'));
+  const alvo=document.getElementById('pg-'+rota)||document.getElementById('pg-inicio');
+  alvo.classList.add('ativa');
+  abas.querySelectorAll('button').forEach(b=>b.classList.toggle('ativa',b.dataset.rota===rota));
+  window.scrollTo({top:0});
+}
+abas.addEventListener('click',e=>{const b=e.target.closest('button');if(b){location.hash=b.dataset.rota;}});
+window.addEventListener('hashchange',()=>rotear());
+function rotear(){
+  const h=location.hash.replace('#','')||'inicio';
+  if(h.startsWith('modulo-')){abrirModulo(+h.split('-')[1]);return;}
+  irPara(h);
+}
+
+/* ═══════════ RENDER: módulos ═══════════ */
+function statusMod(i){
+  const dt=DATAS[i-1].d, agora=new Date();
+  if(agora>new Date(dt.getTime()+864e5)) return ['✔ Concluído','st-feito'];
+  const prox=DATAS.find(x=>x.d>agora);
+  if(prox&&prox.m===i) return ['● Próximo encontro','st-prox'];
+  return ['○ Em breve',''];
+}
+const grade=document.getElementById('gradeMod');
+grade.innerHTML=MODULOS.map(m=>{
+  const [st,cl]=statusMod(m.id);
+  return `<div class="mod-card" onclick="location.hash='modulo-${m.id}'">
+    <div class="faixa" style="background:${m.cor}"></div>
+    <div class="corpo">
+      <div class="rotulo"><div class="num" style="background:${m.cor}">M${m.id}</div><h3>${m.titulo}</h3></div>
+      <p style="font-size:.85rem;color:var(--tx2)">${m.resumo}</p>
+      <div class="meta"><span class="chip">⏱ ${m.carga}</span>${m.ferr.map(f=>`<span class="chip">${f}</span>`).join('')}</div>
+      <div class="status ${cl}">${st}</div>
+    </div></div>`;
+}).join('');
+
+function abrirModulo(id){
+  const m=MODULOS.find(x=>x.id===id); if(!m){irPara('modulos');return;}
+  const d=DATAS[id-1];
+  document.getElementById('modDetalhe').innerHTML=`
+    <div class="mod-topo" style="background:linear-gradient(135deg,${m.hex},${escurecer(m.hex)})">
+      <button class="volta" onclick="location.hash='modulos'">← Todos os módulos</button>
+      <h2>Módulo ${m.id} — ${m.titulo}</h2>
+      <div class="meta"><span>⏱ ${m.carga}</span><span>📅 ${d.rot}</span><span>🎁 Produto: ${m.produto}</span></div>
+    </div>
+    <div class="card"><p style="font-size:.95rem">${m.resumo}</p></div>
+    <h3 style="margin:4px 0 12px;color:var(--verde2)">Plano do encontro</h3>
+    ${m.blocos.map((b,i)=>`<div class="acordeao"><button onclick="this.parentElement.classList.toggle('aberto')">
+      <span class="marc" style="background:${m.hex}"></span><b>Bloco ${i+1} — ${b[0]}</b>
+      <span class="dur">${b[1]}</span><span class="seta">▶</span></button>
+      <div class="conteudo"><p>${b[2]}</p></div></div>`).join('')}
+    <div class="card" style="margin-top:16px;border-left:6px solid ${m.hex}">
+      <b>Ferramentas deste módulo:</b> <span style="color:var(--tx2)">${m.ferr.join(' · ')}</span><br>
+      <b>Você sai com:</b> <span style="color:var(--tx2)">${m.produto}</span>
+    </div>`;
+  document.querySelectorAll('.pagina').forEach(p=>p.classList.remove('ativa'));
+  document.getElementById('pg-modulo').classList.add('ativa');
+  abas.querySelectorAll('button').forEach(b=>b.classList.toggle('ativa',b.dataset.rota==='modulos'));
+  window.scrollTo({top:0});
+}
+function escurecer(hex){
+  const n=parseInt(hex.slice(1),16);
+  const f=c=>Math.max(0,Math.floor(c*.55)).toString(16).padStart(2,'0');
+  return '#'+f(n>>16)+f(n>>8&255)+f(n&255);
+}
+
+/* ═══════════ RENDER: linhas do tempo ═══════════ */
+function linhaTempo(el,detalhe){
+  el.innerHTML=DATAS.map((d,i)=>{
+    const m=MODULOS[i],[st]=statusMod(m.id);
+    const feito=st.startsWith('✔');
+    return `<div class="item"><span class="ponto" style="background:${feito?m.hex:'var(--linha)'};border-color:var(--card)"></span>
+      <b style="cursor:pointer" onclick="location.hash='modulo-${m.id}'">M${m.id} · ${m.titulo}</b>
+      <span class="data">${d.rot} · ${m.carga} ${feito?'· concluído ✔':''}</span>
+      ${detalhe?`<div class="desc">${m.produto}</div>`:''}</div>`;
+  }).join('');
+}
+linhaTempo(document.getElementById('tempoInicio'),false);
+linhaTempo(document.getElementById('tempoCrono'),true);
+
+/* ═══════════ CONTAGEM REGRESSIVA ═══════════ */
+function contagem(){
+  const prox=DATAS.find(x=>x.d>new Date());
+  const elC=document.getElementById('contagem'),elT=document.getElementById('proxTitulo');
+  if(!prox){elT.textContent='Curso concluído! Obrigado por fazer parte desta rede. 🌿';elC.innerHTML='';return;}
+  const m=MODULOS[prox.m-1];
+  elT.innerHTML=`<b>M${m.id} — ${m.titulo}</b> · ${prox.rot}`;
+  const dif=prox.d-new Date();
+  const dd=Math.floor(dif/864e5),hh=Math.floor(dif%864e5/36e5),mm=Math.floor(dif%36e5/6e4);
+  elC.innerHTML=`<div><b>${dd}</b><span>dias</span></div><div><b>${hh}</b><span>horas</span></div><div><b>${mm}</b><span>min</span></div>`;
+}
+contagem();setInterval(contagem,3e4);
+
+/* ═══════════ CHECKLIST (localStorage) ═══════════ */
+function checklist(itens,chave,elLista,elBar,elPct){
+  const salvo=JSON.parse(localStorage.getItem(chave)||'{}');
+  const el=document.getElementById(elLista);
+  function render(){
+    el.innerHTML=itens.map((t,i)=>`<div class="check-item ${salvo[i]?'feito':''}" data-i="${i}">
+      <input type="checkbox" id="${chave}${i}" ${salvo[i]?'checked':''}><label for="${chave}${i}">${t}</label></div>`).join('');
+    const n=itens.filter((_,i)=>salvo[i]).length,pct=Math.round(n/itens.length*100);
+    document.getElementById(elBar).style.width=pct+'%';
+    document.getElementById(elPct).textContent=`${n}/${itens.length}`;
+  }
+  el.addEventListener('change',e=>{
+    const i=e.target.closest('.check-item').dataset.i;
+    salvo[i]=e.target.checked;localStorage.setItem(chave,JSON.stringify(salvo));render();
+  });
+  render();
+}
+checklist(DOCS,'cr_docs','ckDocs','barDocs','pctDocs');
+checklist(PRODS,'cr_prod','ckProd','barProd','pctProd');
+
+/* ═══════════ MATERIAIS ═══════════ */
+document.getElementById('listaSlides').innerHTML=MODULOS.map(m=>
+ `<a class="rec" href="#modulo-${m.id}"><div class="ico" style="background:${m.hex}">M${m.id}</div>
+  <div><b>Slides — ${m.titulo}</b><span>disponível na pasta do módulo no Drive</span></div></a>`).join('');
+document.getElementById('listaFerr').innerHTML=FERRAMENTAS.map(f=>
+ `<a class="rec" href="${f[4]}" target="_blank" rel="noopener"><div class="ico" style="background:${f[1]}">${f[0]}</div>
+  <div><b>${f[2]}</b><span>${f[3]}</span></div></a>`).join('');
+
+/* ═══════════ TEMA ═══════════ */
+const btnTema=document.getElementById('btnTema');
+function aplicarTema(t){document.documentElement.dataset.tema=t;btnTema.textContent=t==='escuro'?'☀️':'🌙';localStorage.setItem('cr_tema',t);}
+aplicarTema(localStorage.getItem('cr_tema')||(matchMedia('(prefers-color-scheme: dark)').matches?'escuro':'claro'));
+btnTema.onclick=()=>aplicarTema(document.documentElement.dataset.tema==='escuro'?'claro':'escuro');
+
+/* ═══════════ PWA ═══════════ */
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+let promptInstalar=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptInstalar=e;document.getElementById('instalar').style.display='block';});
+document.getElementById('instalar').onclick=async()=>{if(!promptInstalar)return;promptInstalar.prompt();await promptInstalar.userChoice;document.getElementById('instalar').style.display='none';};
+function redeStatus(){document.body.classList.toggle('offline',!navigator.onLine);}
+window.addEventListener('online',redeStatus);window.addEventListener('offline',redeStatus);redeStatus();
+
+rotear();
+</script>
+</body>
+</html>
